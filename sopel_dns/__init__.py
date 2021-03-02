@@ -48,11 +48,11 @@ def get_dnsinfo(bot, trigger):
             bot.reply("Did not find any A records for {}.".format(domain))
             return
 
-    except dns.exception.Timeout as e:
+    except dns.exception.Timeout:
         bot.reply("DNS lookup timed out for {}.".format(domain))
         return
 
-    except dns.resolver.NXDOMAIN as e:
+    except dns.resolver.NXDOMAIN:
         bot.reply("DNS lookup returned NXDOMAIN for {}.".format(domain))
         return
 
