@@ -12,18 +12,35 @@ import requests
 
 from sopel import module
 
+ONELINE_RDTYPES = [
+    'A',
+    'AAAA',
+    'CNAME',
+]
+MULTILINE_RDTYPES = [
+    'TXT',
+]
+IMPLEMENTED_RDTYPES = ONELINE_RDTYPES + MULTILINE_RDTYPES
+
 
 @module.commands('dns')
-@module.example('.dns domain.tld')
+@module.example('.dns domain.tld AAAA', user_help=True)
+@module.example('.dns domain.tld', user_help=True)
 @module.rate(user=300)
 def get_dnsinfo(bot, trigger):
     """Look up DNS information for a domain name."""
-    domain = trigger.group(2)
+    domain = trigger.group(3)
+    rdtype = trigger.group(4) or 'A'
+    rdtype = rdtype.upper()
+
+    if rdtype not in IMPLEMENTED_RDTYPES:
+        bot.reply("I don't know how to show {} records yet.".format(rdtype))
+        return module.NOLIMIT
 
     responses = []
 
     try:
-        answers = dns.resolver.query(domain, 'A')
+        answers = dns.resolver.query(domain, rdtype)
         if len(answers) > 0:
             for rdata in answers:
                 responses.append(rdata.to_text())
@@ -43,4 +60,10 @@ def get_dnsinfo(bot, trigger):
         bot.reply("DNS lookup attempted, but no nameservers were available.")
         return
 
-    bot.reply(', '.join([str(x) for x in responses]))
+    if rdtype in ONELINE_RDTYPES:
+        bot.reply(', '.join([str(x) for x in responses]))
+        return
+
+    # Record types that should be handled one response per line
+    for x in responses:
+        bot.reply(str(x))
