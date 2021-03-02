@@ -18,6 +18,8 @@ ONELINE_RDTYPES = [
     'CNAME',
 ]
 MULTILINE_RDTYPES = [
+    'MX',
+    'PTR',
     'TXT',
 ]
 IMPLEMENTED_RDTYPES = ONELINE_RDTYPES + MULTILINE_RDTYPES
@@ -40,24 +42,26 @@ def get_dnsinfo(bot, trigger):
     responses = []
 
     try:
-        answers = dns.resolver.query(domain, rdtype)
-        if len(answers) > 0:
-            for rdata in answers:
-                responses.append(rdata.to_text())
+        if rdtype == 'PTR':
+            answers = dns.resolver.resolve_address(domain)
         else:
-            bot.reply("Did not find any A records for {}.".format(domain))
-            return
+            answers = dns.resolver.resolve(domain, rdtype)
 
     except dns.exception.Timeout:
         bot.reply("DNS lookup timed out for {}.".format(domain))
         return
-
     except dns.resolver.NXDOMAIN:
         bot.reply("DNS lookup returned NXDOMAIN for {}.".format(domain))
         return
-
     except dns.resolver.NoNameservers:
         bot.reply("DNS lookup attempted, but no nameservers were available.")
+        return
+
+    if len(answers) > 0:
+        for rdata in answers:
+            responses.append(rdata.to_text())
+    else:
+        bot.reply("Did not find any {} records for {}.".format(rdtype, domain))
         return
 
     if rdtype in ONELINE_RDTYPES:
