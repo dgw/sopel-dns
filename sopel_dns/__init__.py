@@ -16,6 +16,7 @@ ONELINE_RDTYPES = [
     'A',
     'AAAA',
     'CNAME',
+    'NS',
 ]
 MULTILINE_RDTYPES = [
     'MX',
