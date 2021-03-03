@@ -1,7 +1,7 @@
 # coding=utf8
 """sopel-dns
 
-A DNS lookup plugin for Sopel bots
+A DNS lookup plugin for Sopel IRC bots
 """
 from __future__ import unicode_literals, absolute_import, division, print_function
 

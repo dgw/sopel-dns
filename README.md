@@ -1,6 +1,6 @@
 # sopel-dns
 
-A DNS lookup plugin for Sopel bots
+A DNS lookup plugin for Sopel IRC bots
 
 
 ## Usage
