@@ -50,13 +50,19 @@ def get_dnsinfo(bot, trigger):
 
     except dns.exception.Timeout:
         bot.reply("DNS lookup timed out for {}.".format(domain))
-        return
+        return module.NOLIMIT
     except dns.resolver.NXDOMAIN:
         bot.reply("DNS lookup returned NXDOMAIN for {}.".format(domain))
-        return
+        return module.NOLIMIT
     except dns.resolver.NoNameservers:
         bot.reply("DNS lookup attempted, but no nameservers were available.")
-        return
+        return module.NOLIMIT
+    except dns.exception.SyntaxError:
+        if rdtype == 'PTR':
+            bot.reply("PTR record lookup is only supported for IP addresses.")
+        else:
+            bot.reply("That domain name doesn't seem to be valid.")
+        return module.NOLIMIT
 
     if len(answers) > 0:
         for rdata in answers:
