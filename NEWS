@@ -1,0 +1,11 @@
+Version 0.2.0
+=============
+
+Added support for choosing DNS record type to look up. Currently understands
+`A`, `AAAA`, `CNAME`, `MX`, `NS`, `PTR` (for IP addresses only), and `TXT`.
+
+
+Version 0.1.0
+=============
+
+Initial release with support for querying a domain's `A` records.
