@@ -57,6 +57,9 @@ def get_dnsinfo(bot, trigger):
     except dns.resolver.NoNameservers:
         bot.reply("DNS lookup attempted, but no nameservers were available.")
         return module.NOLIMIT
+    except dns.resolver.NoAnswer:
+        bot.reply("No {} records exist for {}.".format(rdtype, domain))
+        return module.NOLIMIT
     except dns.exception.SyntaxError:
         if rdtype == 'PTR':
             bot.reply("PTR record lookup is only supported for IP addresses.")
