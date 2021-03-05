@@ -1,3 +1,13 @@
+Version 0.3.0
+=============
+
+Added `[dns]` output prefix. This also meant changing most of the plugin's
+output from replies to normal "say", which is fine. The flood of HLs from
+looking up stuff like `MX` or `TXT` records could get annoying.
+
+Rate limit has been reduced from 5 minutes to 2 minutes.
+
+
 Version 0.2.1
 =============
 
