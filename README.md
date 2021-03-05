@@ -3,6 +3,13 @@
 A DNS lookup plugin for Sopel IRC bots
 
 
+## Requirements
+
+* Sopel 7.0+
+* `dnspython` 2.x
+* Python 3.6+
+
+
 ## Usage
 
 Basic usage performs an 'A' record lookup:

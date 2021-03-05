@@ -1,3 +1,10 @@
+Version 0.3.1
+=============
+
+Tightened `dnspython` requirement vs. Sopel's own. This plugin now requires
+Python 3.6+ (because that's what `dnspython` 2.x supports).
+
+
 Version 0.3.0
 =============
 
