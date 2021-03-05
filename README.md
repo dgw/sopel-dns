@@ -26,7 +26,7 @@ possible "spam" if there are many records attached to the queried domain.
 
 ### Rate limiting
 
-Normal users are rate-limited to one `.dns` command every 5 minutes, both to
+Normal users are rate-limited to one `.dns` command every 2 minutes, both to
 control channel flood and to prevent hammering whatever DNS server Sopel's
 host system uses to resolve the submitted queries.
 

@@ -31,7 +31,7 @@ IMPLEMENTED_RDTYPES = ONELINE_RDTYPES + MULTILINE_RDTYPES
 @module.example('.dns domain.tld AAAA', user_help=True)
 @module.example('.dns domain.tld', user_help=True)
 @module.output_prefix('[dns] ')
-@module.rate(user=300)
+@module.rate(user=120)
 def get_dnsinfo(bot, trigger):
     """Look up DNS information."""
     domain = trigger.group(3)
