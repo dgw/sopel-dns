@@ -5,7 +5,7 @@ A DNS lookup plugin for Sopel IRC bots
 
 ## Requirements
 
-* Sopel 7.0+
+* Sopel 7.1+
 * `dnspython` 2.x
 * Python 3.6+
 

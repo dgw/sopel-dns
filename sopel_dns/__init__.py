@@ -10,7 +10,7 @@ import time
 import dns.resolver
 import requests
 
-from sopel import module
+from sopel import plugin
 
 ONELINE_RDTYPES = [
     'A',
@@ -26,12 +26,12 @@ MULTILINE_RDTYPES = [
 IMPLEMENTED_RDTYPES = ONELINE_RDTYPES + MULTILINE_RDTYPES
 
 
-@module.commands('dns')
-@module.example('.dns 1.2.3.4 PTR', user_help=True)
-@module.example('.dns domain.tld AAAA', user_help=True)
-@module.example('.dns domain.tld', user_help=True)
-@module.output_prefix('[dns] ')
-@module.rate(user=120)
+@plugin.commands('dns')
+@plugin.example('.dns 1.2.3.4 PTR', user_help=True)
+@plugin.example('.dns domain.tld AAAA', user_help=True)
+@plugin.example('.dns domain.tld', user_help=True)
+@plugin.output_prefix('[dns] ')
+@plugin.rate(user=120)
 def get_dnsinfo(bot, trigger):
     """Look up DNS information."""
     domain = trigger.group(3)
@@ -40,7 +40,7 @@ def get_dnsinfo(bot, trigger):
 
     if rdtype not in IMPLEMENTED_RDTYPES:
         bot.reply("I don't know how to show {} records yet.".format(rdtype))
-        return module.NOLIMIT
+        return plugin.NOLIMIT
 
     responses = []
 
@@ -55,13 +55,13 @@ def get_dnsinfo(bot, trigger):
             bot.reply("PTR record lookup is only supported for IP addresses.")
         else:
             bot.reply("That domain name doesn't seem to be valid.")
-        return module.NOLIMIT
+        return plugin.NOLIMIT
     except dns.exception.Timeout:
         bot.say("DNS lookup timed out for {}.".format(domain))
-        return module.NOLIMIT
+        return plugin.NOLIMIT
     except dns.resolver.NoNameservers:
         bot.say("DNS lookup attempted, but no nameservers were available.")
-        return module.NOLIMIT
+        return plugin.NOLIMIT
     except dns.resolver.NXDOMAIN:
         bot.say("DNS lookup returned NXDOMAIN for {}.".format(domain))
         return  # do rate-limit, since query succeeded
