@@ -1,4 +1,3 @@
-# coding=utf8
 """sopel-dns
 
 A DNS lookup plugin for Sopel IRC bots
@@ -31,7 +30,10 @@ IMPLEMENTED_RDTYPES = ONELINE_RDTYPES + MULTILINE_RDTYPES
 @plugin.example('.dns domain.tld AAAA', user_help=True)
 @plugin.example('.dns domain.tld', user_help=True)
 @plugin.output_prefix('[dns] ')
-@plugin.rate(user=120)
+@plugin.rate(
+    user=120,
+    message="Please wait {time_left} before attempting another DNS lookup."
+)
 def get_dnsinfo(bot, trigger):
     """Look up DNS information."""
     domain = trigger.group(3)
