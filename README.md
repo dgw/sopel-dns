@@ -12,9 +12,9 @@ $ pip install sopel-dns
 
 ### Requirements
 
-* Sopel 7.1+
+* Python 3.8+
+* Sopel 8.0+
 * `dnspython` 2.x
-* Python 3.6+
 
 
 ## Usage
