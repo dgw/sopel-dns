@@ -2,8 +2,15 @@
 
 A DNS lookup plugin for Sopel IRC bots
 
+## Installing
 
-## Requirements
+Releases are hosted on PyPI, so after installing Sopel, all you need is `pip`:
+
+```shell
+$ pip install sopel-dns
+```
+
+### Requirements
 
 * Sopel 7.1+
 * `dnspython` 2.x

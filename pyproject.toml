@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=63.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+platforms = ["Linux x86, x86-64"]
+
+[tool.setuptools.packages.find]
+include = ["sopel_dns", "sopel_dns.*"]
+namespaces = false
+
+[tool.setuptools.dynamic]
+readme = { file=["README.md", "NEWS"], content-type="text/markdown" }
+
+[project]
+name = "sopel-dns"
+version = "0.5.0.dev0"
+description = "A DNS lookup plugin for Sopel IRC bots"
+
+authors = [
+  { name="dgw", email="dgw@technobabbl.es" },
+]
+
+license = { text="EFL-2.0" }
+dynamic = ["readme"]
+
+classifiers = [
+  "Intended Audience :: Developers",
+  "Intended Audience :: System Administrators",
+  "License :: Eiffel Forum License (EFL)",
+  "License :: OSI Approved :: Eiffel Forum License",
+  "Topic :: Communications :: Chat :: Internet Relay Chat",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.6",
+  "Programming Language :: Python :: 3.7",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+]
+keywords = [
+  "sopel",
+  "plugin",
+  "bot",
+  "irc",
+]
+
+requires-python = ">=3.6, <4"
+dependencies = [
+  "sopel>=7.1,<9",
+  "dnspython>=2.0,<3",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/dgw/sopel-dns"
+"Bug Tracker" = "https://github.com/dgw/sopel-dns/issues"
+
+[project.entry-points."sopel.plugins"]
+"dns" = "sopel_dns.plugin"
