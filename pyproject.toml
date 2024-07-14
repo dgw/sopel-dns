@@ -31,11 +31,11 @@ classifiers = [
   "License :: OSI Approved :: Eiffel Forum License",
   "Topic :: Communications :: Chat :: Internet Relay Chat",
   "Programming Language :: Python :: 3 :: Only",
-  "Programming Language :: Python :: 3.6",
-  "Programming Language :: Python :: 3.7",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
 ]
 keywords = [
   "sopel",
@@ -44,9 +44,9 @@ keywords = [
   "irc",
 ]
 
-requires-python = ">=3.6, <4"
+requires-python = ">=3.8, <4"
 dependencies = [
-  "sopel>=7.1,<9",
+  "sopel>=8.0",
   "dnspython>=2.0,<3",
 ]
 
