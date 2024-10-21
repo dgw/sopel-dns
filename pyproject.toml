@@ -14,7 +14,7 @@ readme = { file=["README.md", "NEWS"], content-type="text/markdown" }
 
 [project]
 name = "sopel-dns"
-version = "0.5.0.dev0"
+version = "0.5.0"
 description = "A DNS lookup plugin for Sopel IRC bots"
 
 authors = [

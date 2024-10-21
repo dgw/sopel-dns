@@ -1,18 +1,33 @@
-Version 0.4.0
-=============
+## Changelog
+
+### 0.5.0
+
+Added:
+* Rate limit feedback indicating how much time is left in cooldown ([#3][])
+
+Changed:
+* Require Sopel 8.0+
+
+Meta:
+* Converted to modern package style, `setup.cfg` → `pyproject.toml`
+* Automated releases with GitHub Actions + PyPI Trusted Publishing
+* Reworked NEWS file to match the README's style of Markdown
+
+[#3]: https://github.com/dgw/sopel-dns/pull/3
+
+
+### 0.4.0
 
 Now requires Sopel 7.1, but also works on (upcoming) Sopel 8.0.
 
 
-Version 0.3.1
-=============
+### 0.3.1
 
 Tightened `dnspython` requirement vs. Sopel's own. This plugin now requires
 Python 3.6+ (because that's what `dnspython` 2.x supports).
 
 
-Version 0.3.0
-=============
+### 0.3.0
 
 Added `[dns]` output prefix. This also meant changing most of the plugin's
 output from replies to normal "say", which is fine. The flood of HLs from
@@ -21,20 +36,17 @@ looking up stuff like `MX` or `TXT` records could get annoying.
 Rate limit has been reduced from 5 minutes to 2 minutes.
 
 
-Version 0.2.1
-=============
+### 0.2.1
 
 Fixed error when a DNS query has no answer (no results).
 
 
-Version 0.2.0
-=============
+### 0.2.0
 
 Added support for choosing DNS record type to look up. Currently understands
 `A`, `AAAA`, `CNAME`, `MX`, `NS`, `PTR` (for IP addresses only), and `TXT`.
 
 
-Version 0.1.0
-=============
+### 0.1.0
 
 Initial release with support for querying a domain's `A` records.
