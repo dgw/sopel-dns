@@ -1,13 +1,15 @@
 """sopel-dns
 
 A DNS lookup plugin for Sopel IRC bots
-"""
-from __future__ import unicode_literals, absolute_import, division, print_function
 
-import time
+Copyright (c) 2021-2025 dgw, technobabbl.es
+Based on sample code posted by IRC user 'catbeard'
+
+Licensed under the Eiffel Forum License 2.
+"""
+from __future__ import annotations
 
 import dns.resolver
-import requests
 
 from sopel import plugin
 

@@ -19,29 +19,35 @@ description = "A DNS lookup plugin for Sopel IRC bots"
 
 authors = [
   { name="dgw", email="dgw@technobabbl.es" },
+  { name="catbeard" },
+]
+maintainers = [
+  { name="dgw", email="dgw@technobabbl.es" },
 ]
 
-license = { text="EFL-2.0" }
+license = "EFL-2.0"
+license-files = ["COPYING"]
 dynamic = ["readme"]
 
 classifiers = [
   "Intended Audience :: Developers",
   "Intended Audience :: System Administrators",
-  "License :: Eiffel Forum License (EFL)",
-  "License :: OSI Approved :: Eiffel Forum License",
   "Topic :: Communications :: Chat :: Internet Relay Chat",
+  "Topic :: Internet :: Name Service (DNS)",
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.8",
   "Programming Language :: Python :: 3.9",
   "Programming Language :: Python :: 3.10",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
 ]
 keywords = [
   "sopel",
   "plugin",
   "bot",
   "irc",
+  "dns",
 ]
 
 requires-python = ">=3.8, <4"
